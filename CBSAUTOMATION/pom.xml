@@ -25,6 +25,12 @@
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
+             <dependency>
+    <groupId>io.github.mkolisnyk</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>5.7.0</version>  <!-- Change this version -->
+</dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
