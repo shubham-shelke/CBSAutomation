@@ -28,7 +28,7 @@
              <dependency>
     <groupId>io.github.mkolisnyk</groupId>
     <artifactId>cucumber-reporting</artifactId>
-    <version>5.6.0</version>  <!-- Change this version -->
+    <version>5.7.0</version> 
 </dependency>
 
         <dependency>
