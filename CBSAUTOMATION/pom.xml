@@ -141,6 +141,11 @@
 
     <build>
         <plugins>
+
+<systemPropertyVariables>
+    <cucumber.options>--plugin json:target/cucumber.json</cucumber.options>
+</systemPropertyVariables>
+
             <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
