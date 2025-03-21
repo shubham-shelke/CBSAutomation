@@ -13,7 +13,7 @@
         <cucumber.version>7.17.0</cucumber.version>
         <junit.version>4.13.2</junit.version>
         <selenium.version>4.18.1</selenium.version>
-        <tess4j.version>5.7.0</tess4j.version>
+        <tess4j.version>5.6.0</tess4j.version>
         <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <extent.report.version>5.1.0</extent.report.version>
     </properties>
@@ -50,7 +50,7 @@
              <dependency>
     <groupId>io.github.mkolisnyk</groupId>
     <artifactId>cucumber-reporting</artifactId>
-    <version>5.7.0</version> 
+    <version>5.6.0</version> 
 </dependency>
 -->
         <dependency>
