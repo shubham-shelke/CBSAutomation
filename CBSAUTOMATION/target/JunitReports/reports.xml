@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="86.958" tests="2" skipped="0" failures="1" errors="0">
+<testcase classname="Test User login Functionality" name="Check Login is successful with valid credentials - #1.1" time="28.412">
+<failure type="java.lang.AssertionError" message="expected [[Relo Writer] Log In] but found [[Relo Writer] Dashboard]">
+<![CDATA[java.lang.AssertionError: expected [[Relo Writer] Log In] but found [[Relo Writer] Dashboard]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:629)
+	at org.testng.Assert.assertEquals(Assert.java:639)
+	at StepDefinitions.LoginStepDefinition.user_navigated_to_the_home_page(LoginStepDefinition.java:164)
+	at ✽.user navigated to the home page(file:///C:/Users/shubham.shelke/git/repository/CBSAUTOMATION/src/test/resources/Features/1_Login.feature:19)
+]]>
+</failure>
+<system-out><![CDATA[
+Given Browser is open.......................................................passed
+And User is on login page...................................................passed
+When user enter shubham.shelkeIT and 29431 and clicks on login..............passed
+And select the company and business_line....................................passed
+And I click on submit button................................................passed
+Then user navigated to the home page........................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Test Enquiry creation" name="Check the Enquiry form field with valid data" time="58.336">
+<system-out><![CDATA[
+Given user is on the home page..............................................passed
+When user click on the Enquiry button.......................................passed
+Then Enquiry page should be open............................................passed
+And user clicks on the create button........................................passed
+And user selecting the revenue_branch.......................................passed
+And user selecting the move_class...........................................passed
+And user selecting the info_source..........................................passed
+And user enter the enquiry form name........................................passed
+And user select the tentive movedate........................................passed
+And user select the enquiry receiveddate....................................passed
+And user selecting the client...............................................passed
+And user selecting the corporate............................................passed
+And user selecting the account_manager......................................passed
+And user select the shipper title...........................................passed
+And user enters the shipper first name......................................passed
+And User enters the shipper last name.......................................passed
+And user selects the shipper designation....................................passed
+And user selects the shipper type shipper_type..............................passed
+And user selects the shipment category ship_category........................passed
+And user fills the address1.................................................passed
+And user fills the address2.................................................passed
+And user selects the shipper city city......................................passed
+And User Enters the Pincode.................................................passed
+And user selects the shipper nationality nationality........................passed
+And user enters the mobile number...........................................passed
+And user enters the email address...........................................passed
+And user clicks on the detailed tab.........................................passed
+And user select the handling branch.........................................passed
+And user select the service_line............................................passed
+And user select the transit mode............................................passed
+And user select the handling shipment type..................................passed
+And user select the commodity...............................................passed
+And user selects the tentive move date......................................passed
+And the user selecting the origin city......................................passed
+And the user selecting destination city.....................................passed
+And the clicks on the SchSurvey Details tab.................................passed
+And user selecting Sch.Surveyor Name........................................passed
+And user selecting Sch.Survey Type..........................................passed
+And user selecting Sch Survey Date..........................................passed
+And click on add shipment button............................................passed
+And click on save button....................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
