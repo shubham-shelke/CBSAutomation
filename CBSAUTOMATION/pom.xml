@@ -17,7 +17,7 @@
         <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <extent.report.version>5.1.0</extent.report.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
-        <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
+        <cucumber.reporting.plugin.version>5.8.0</cucumber.reporting.plugin.version>
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
         <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
