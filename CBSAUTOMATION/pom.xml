@@ -70,10 +70,11 @@
             <version>${selenium.version}</version>
         </dependency>
 
-<dependency>
+
+             <dependency>
     <groupId>io.github.mkolisnyk</groupId>
     <artifactId>cucumber-reporting</artifactId>
-    <version>5.0.4</version>  <!-- Change this to an available version -->
+    <version>5.0.4</version>
 </dependency>
 
              
