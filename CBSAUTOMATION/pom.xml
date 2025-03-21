@@ -70,13 +70,13 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
+<!--
 <dependency>
     <groupId>io.github.mkolisnyk</groupId>
     <artifactId>cucumber-reporting</artifactId>
     <version>5.0.4</version>
 </dependency>
-
+-->
              
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
