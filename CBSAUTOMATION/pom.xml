@@ -54,7 +54,14 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-       
+
+<dependency>
+    <groupId>io.github.mkolisnyk</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>5.0.4</version>  <!-- Change this to an available version -->
+</dependency>
+
+             
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
