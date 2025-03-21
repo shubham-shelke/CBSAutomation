@@ -16,35 +16,33 @@
         <tess4j.version>5.7.0</tess4j.version>
         <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <extent.report.version>5.1.0</extent.report.version>
+        <surefire.plugin.version>2.22.2</surefire.plugin.version>
+        <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
+        <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
+        <jackson.version>2.12.5</jackson.version>
+        <log4j.version>2.14.1</log4j.version>
+        <testng.version>7.10.2</testng.version>
+        <appium.version>8.5.1</appium.version>
+        <poi.version>4.1.2</poi.version>
+        <commons.io.version>2.11.0</commons.io.version>
     </properties>
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-
-
-    <repositories>
-        <repository>
-            <id>cucumber-repo</id>
-            <url>https://repo.cucumber.io/repository/maven-releases/</url>
-        </repository>
-    </repositories>
-
 
     <dependencies>
+        <!-- Cucumber Reporting -->
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+
         <!-- Cucumber Dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-             <dependency>
-    <groupId>io.github.mkolisnyk</groupId>
-    <artifactId>cucumber-reporting</artifactId>
-    <version>5.7.0</version> 
-</dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
@@ -56,32 +54,14 @@
             <version>${cucumber.version}</version>
         </dependency>
 
-        <!-- Selenium Dependencies -->
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
-<dependency>
-    <groupId>io.github.mkolisnyk</groupId>
-    <artifactId>cucumber-reporting</artifactId>
-    <version>5.0.4</version>  <!-- Change this to an available version -->
-</dependency>
-
-             
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-edge-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-
-        <!-- JUnit Dependency -->
+        <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -93,116 +73,84 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.12.5</version>
+            <version>${jackson.version}</version>
         </dependency>
 
-        <!-- Tesseract OCR Dependency -->
+        <!-- Tesseract OCR -->
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
             <artifactId>tess4j</artifactId>
             <version>${tess4j.version}</version>
         </dependency>
 
-        <!-- WebDriverManager Dependency -->
+        <!-- WebDriverManager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
 
-        <!-- Extent Reports Dependencies -->
+        <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.1.0</version>
+            <version>${extent.report.version}</version>
         </dependency>
-       
 
-        <!-- Apache POI Dependencies -->
+        <!-- Apache POI for Excel -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>4.1.2</version>
+            <version>${poi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>4.1.2</version>
+            <version>${poi.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
-            <version>4.1.2</version>
-        </dependency>
+
+        <!-- Commons IO -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>fluent-hc</artifactId>
-            <version>4.5.14</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-scratchpad</artifactId>
-            <version>5.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>openxml4j</artifactId>
-            <version>1.0-beta</version>
+            <version>${commons.io.version}</version>
         </dependency>
 
-        <!-- Additional Dependencies -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>8.5.1</version>
-        </dependency>
+        <!-- Logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.14.1</version>
+            <version>${log4j.version}</version>
         </dependency>
-        
+
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Appium -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Maven Surefire Plugin for running tests -->
+            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/CucumberTestRunner.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <!-- Generates JSON report at target/cucumber.json -->
                         <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
                     </systemPropertyVariables>
                 </configuration>
@@ -212,7 +160,7 @@
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.8.1</version>
+                <version>${cucumber.reporting.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>cucumber-report</id>
@@ -221,7 +169,6 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <!-- Name and report output path -->
                             <projectName>Cucumber Selenium Project</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
                             <jsonFiles>
@@ -238,38 +185,22 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven.clean.plugin.version}</version>
             </plugin>
-            
+
             <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven.compiler.plugin.version}</version>
             </plugin>
-            
+
             <!-- Maven Jar Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${maven.jar.plugin.version}</version>
             </plugin>
-            
-            
-            <plugin>
-    <groupId>io.github.mkolisnyk</groupId>
-    <artifactId>cucumber-reporting</artifactId>
-    <version>5.7.0</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>generate</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
-
-            
         </plugins>
     </build>
 </project>
