@@ -22,6 +22,14 @@
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
     </repository>
+
+         <repositories>
+    <repository>
+        <id>cucumber-repo</id>
+        <url>https://repo.cucumber.io/repository/maven-releases/</url>
+    </repository>
+</repositories>
+
 </repositories>
 
     <dependencies>
