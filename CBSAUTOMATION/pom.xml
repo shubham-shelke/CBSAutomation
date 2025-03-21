@@ -142,6 +142,28 @@
     <build>
         <plugins>
 
+
+                 <plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.8.0</version>
+    <executions>
+        <execution>
+            <id>cucumber-report</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <projectName>cucumber-selenium-project</projectName>
+                <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                <jsonFiles>${project.build.directory}/cucumber.json</jsonFiles>
+                <buildNumber>1</buildNumber>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+                 
             <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
