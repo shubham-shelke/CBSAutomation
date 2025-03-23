@@ -14,7 +14,7 @@
         <junit.version>4.13.2</junit.version>
         <selenium.version>4.18.1</selenium.version>
         <tess4j.version>5.7.0</tess4j.version>
-        <webdrivermanager.version>5.8.0</webdrivermanager.version>
+        <webdrivermanager.version>5.8.1</webdrivermanager.version>
         <extent.report.version>5.1.0</extent.report.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
