@@ -22,7 +22,7 @@
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
         <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
         <jackson.version>2.12.5</jackson.version>
-        <log4j.version>2.14.1</log4j.version>
+        <log4j.version>2.17.1</log4j.version>
         <testng.version>7.10.2</testng.version>
         <appium.version>8.5.1</appium.version>
         <poi.version>4.1.2</poi.version>
@@ -34,7 +34,7 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.6.0</version>
+            <version>5.8.0</version>
         </dependency>
 
         <!-- Cucumber Dependencies -->
@@ -176,10 +176,6 @@
                     <systemPropertyVariables>
                         <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
                     </systemPropertyVariables>
-
-                         <systemPropertyVariables>
-    <cucumber.options>--plugin json:target/cucumber.json</cucumber.options>
-</systemPropertyVariables>
 
                 </configuration>
             </plugin>
