@@ -34,7 +34,7 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.8.0</version>
+            <version>${cucumber.reporting.plugin.version}</version>
         </dependency>
 
         <!-- Cucumber Dependencies -->
@@ -141,29 +141,6 @@
 
     <build>
         <plugins>
-
-
-                 <plugin>
-    <groupId>net.masterthought</groupId>
-    <artifactId>maven-cucumber-reporting</artifactId>
-    <version>5.8.0</version>
-    <executions>
-        <execution>
-            <id>cucumber-report</id>
-            <phase>verify</phase>
-            <goals>
-                <goal>generate</goal>
-            </goals>
-            <configuration>
-                <projectName>cucumber-selenium-project</projectName>
-                <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                <jsonFiles>${project.build.directory}/cucumber.json</jsonFiles>
-                <buildNumber>1</buildNumber>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-                 
             <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -176,54 +153,7 @@
                     <systemPropertyVariables>
                         <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
                     </systemPropertyVariables>
-
                 </configuration>
-            </plugin>
-
-            <!-- Maven Cucumber Reporting Plugin -->
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>${cucumber.reporting.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>cucumber-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>Cucumber Selenium Project</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <jsonFiles>
-                                <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
-                            </jsonFiles>
-                            <buildNumber>1</buildNumber>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Maven Clean Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>${maven.clean.plugin.version}</version>
-            </plugin>
-
-            <!-- Maven Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-            </plugin>
-
-            <!-- Maven Jar Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
