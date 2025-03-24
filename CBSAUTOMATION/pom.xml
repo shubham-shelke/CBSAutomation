@@ -11,10 +11,17 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <cucumber.version>7.17.0</cucumber.version>
-        <cucumber.reporting.plugin.version>5.9.0</cucumber.reporting.plugin.version>
+        <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
         <selenium.version>4.18.1</selenium.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
