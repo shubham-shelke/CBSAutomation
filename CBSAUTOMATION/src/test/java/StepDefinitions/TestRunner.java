@@ -13,8 +13,8 @@ import io.cucumber.junit.CucumberOptions;
     glue = {"StepDefinitions"},
     plugin = {
         "pretty",
-        "junit:target/JunitReports/reports.xml",
-        "json:target/JsonReports/reports.json",
+        // "junit:target/JunitReports/reports.xml",
+        // "json:target/JsonReports/reports.json",
         "html:target/HtmlReports.html"
     },
     monochrome = true ,
