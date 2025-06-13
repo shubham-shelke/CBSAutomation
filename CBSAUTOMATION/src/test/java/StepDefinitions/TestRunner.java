@@ -11,12 +11,12 @@ import io.cucumber.junit.CucumberOptions;
 //    		"D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\src\\test\\resources\\Featurepreprod",
     },
     glue = {"StepDefinitions"},
-    plugin = {
-        "pretty",
+    //plugin = {
+      //  "pretty",
         // "junit:target/JunitReports/reports.xml",
         // "json:target/JsonReports/reports.json",
-        "html:target/HtmlReports.html"
-    },
+       // "html:target/HtmlReports.html"
+   // },
     monochrome = true ,
 //    tags = "@Login or @SurveyDetails or @Pricing or @Approver "
      tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
