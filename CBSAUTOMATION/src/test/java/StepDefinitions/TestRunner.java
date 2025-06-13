@@ -7,7 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = {
-    		"D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\src\\test\\resources\\Features",
+    		//"D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\src\\test\\resources\\Features"
+             "https://github.com/shubham-shelke/CBSAutomation/tree/main/CBSAUTOMATION/src/test/resources/Features",
 //    		"D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\src\\test\\resources\\Featurepreprod",
     },
     glue = {"StepDefinitions"},
