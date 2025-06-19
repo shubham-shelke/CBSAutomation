@@ -49,7 +49,14 @@ public class LoginStepDefinition {
         if (driver == null) {
             fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
             prop.load(fr);
-            driver = new EdgeDriver();
+           
+EdgeOptions options = new EdgeOptions();
+options.addArguments("--headless");
+options.addArguments("--disable-gpu");
+options.addArguments("--no-sandbox");
+options.addArguments("--remote-allow-origins=*");
+driver = new EdgeDriver(options);
+
             driver.manage().window().maximize();
             
         }
