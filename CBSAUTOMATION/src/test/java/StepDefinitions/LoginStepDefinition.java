@@ -42,7 +42,6 @@ public class LoginStepDefinition {
     private PricingPF pricingPage;
 
     @Before
-    @Before
 public void setUp() throws IOException {
     if (driver == null) {
         fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
