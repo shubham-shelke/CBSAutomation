@@ -41,28 +41,27 @@ public class LoginStepDefinition {
     private WebDriverWait wait;
     private PricingPF pricingPage;
 
-    @Before
+   @Before
 public void setUp() throws IOException {
     if (driver == null) {
         fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
         prop.load(fr);
 
-        // Configure EdgeOptions for headless mode
         EdgeOptions options = new EdgeOptions();
-        options.setCapability("ms:edgeOptions", options);
-        options.addArguments("--headless=new"); // fallback to "--headless" if still crashing
+        options.addArguments("--headless=new"); // For Edge Chromium
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
 
-        // Set binary path explicitly if needed
-        options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+        // Optional: Manually set Edge binary path (only if Jenkins agent doesn't have system Edge)
+        // options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
 
         driver = new EdgeDriver(options);
         driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920, 1080));
     }
 }
+
 
 
     @Given("Browser is open")
