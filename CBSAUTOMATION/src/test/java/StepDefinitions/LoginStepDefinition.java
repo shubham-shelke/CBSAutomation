@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
-import org.openqa.selenium.edge.EdgeOptions;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -44,50 +44,17 @@ public class LoginStepDefinition {
     private PricingPF pricingPage;
     
     
-    
-//     public void setUp() throws IOException {
-//         if (driver == null) {
-//             fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
-//             prop.load(fr);
-           
-// EdgeOptions options = new EdgeOptions();
-// options.addArguments("--headless=new"); // or just --headless if --headless=new crashes
-// options.addArguments("--disable-gpu");
-// options.addArguments("--no-sandbox");
-// options.addArguments("--disable-dev-shm-usage"); // prevents crashes due to memory issues
-// options.addArguments("--remote-allow-origins=*");
-
-// WebDriver driver = new EdgeDriver(options);
-
-//             driver.manage().window().maximize();
-            
-//         }
-//     }
     @Before
     public void setUp() throws IOException {
         if (driver == null) {
             fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
             prop.load(fr);
-
-            System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\Drivers\\msedgedriver.exe");
-
-            EdgeOptions options = new EdgeOptions();
-            options.addArguments("--headless=new");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--remote-allow-origins=*");
-
-            try {
-                driver = new EdgeDriver(options);  // ✅ Assign to class-level driver
-                driver.manage().window().maximize();
-            } catch (Exception e) {
-                System.out.println("❌ Failed to start Edge browser: " + e.getMessage());
-                e.printStackTrace();
-                throw new RuntimeException("Browser launch failed");
-            }
+            driver = new EdgeDriver();
+            driver.manage().window().maximize();
+            
         }
     }
+    
 
 @Given("Browser is open")
 public void browser_is_open() {
