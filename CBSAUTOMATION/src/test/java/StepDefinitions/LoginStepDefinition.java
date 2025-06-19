@@ -42,23 +42,29 @@ public class LoginStepDefinition {
     private PricingPF pricingPage;
 
     @Before
-    public void setUp() throws IOException {
-        if (driver == null) {
-            fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
-            prop.load(fr);
+    @Before
+public void setUp() throws IOException {
+    if (driver == null) {
+        fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
+        prop.load(fr);
 
-            EdgeOptions options = new EdgeOptions();
-            options.addArguments("--headless");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--remote-allow-origins=*");
-            options.setBinary("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
+        // Configure EdgeOptions for headless mode
+        EdgeOptions options = new EdgeOptions();
+        options.setCapability("ms:edgeOptions", options);
+        options.addArguments("--headless=new"); // fallback to "--headless" if still crashing
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
 
-            driver = new EdgeDriver(options);
-            driver.manage().window().maximize();
-        }
+        // Set binary path explicitly if needed
+        options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+
+        driver = new EdgeDriver(options);
+        driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920, 1080));
     }
+}
+
 
     @Given("Browser is open")
     public void browser_is_open() {
