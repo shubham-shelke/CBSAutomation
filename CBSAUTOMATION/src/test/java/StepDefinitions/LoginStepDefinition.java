@@ -51,11 +51,13 @@ public class LoginStepDefinition {
             prop.load(fr);
            
 EdgeOptions options = new EdgeOptions();
-options.addArguments("--headless");
+options.addArguments("--headless=new"); // or just --headless if --headless=new crashes
 options.addArguments("--disable-gpu");
 options.addArguments("--no-sandbox");
+options.addArguments("--disable-dev-shm-usage"); // prevents crashes due to memory issues
 options.addArguments("--remote-allow-origins=*");
-driver = new EdgeDriver(options);
+
+WebDriver driver = new EdgeDriver(options);
 
             driver.manage().window().maximize();
             
