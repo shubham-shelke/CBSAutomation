@@ -29,5 +29,5 @@ import io.cucumber.junit.CucumberOptions;
 //    tags = "@QuoteApprover or @Billing"
 //    tags = "@Billing"
 )
-public class TestRunner {
+public class TestRunnerTest {
 }
