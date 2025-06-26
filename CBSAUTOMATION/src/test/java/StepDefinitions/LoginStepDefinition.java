@@ -225,6 +225,7 @@ public class LoginStepDefinition {
 
             // ‑‑‑‑ NEW: run Microsoft Edge in headless mode so Jenkins (no GUI) works
             EdgeOptions options = new EdgeOptions();
+            options.setBinary("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
             options.addArguments("--headless=new");      // Edge 109+; use "--headless" for older
             options.addArguments("--disable-gpu");
             options.addArguments("--window-size=1920,1080");
