@@ -7,9 +7,9 @@
   <!-- ============================================================= -->
   <test name="JUnit-Cucumber-Runner">
     <classes>
-      <!-- Replace with your exact package + class if different -->
-      <class name="TestRunner"/>
-    </classes>
+  <class name="StepDefinitions.TestRunner"/>
+</classes>
+
   </test>
 
   <!-- ============================================================= -->
