@@ -173,6 +173,9 @@ import static org.testng.Assert.assertEquals;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
@@ -183,7 +186,7 @@ import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;                // NEW
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -198,7 +201,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import io.github.bonigarcia.wdm.WebDriverManager;           // NEW (auto‑downloads EdgeDriver)
+import io.github.bonigarcia.wdm.WebDriverManager;  // Auto‑manages EdgeDriver binary
 
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
@@ -213,33 +216,47 @@ public class LoginStepDefinition {
     private WebDriverWait wait;
     private PricingPF pricingPage;
 
+    // ------------------------------------------------------------------
+    //  Initialise WebDriver once per test‑run – headless Edge for CI
+    // ------------------------------------------------------------------
     @Before
     public void setUp() throws IOException {
         if (driver == null) {
-            // Load locators & config
+            // Load locator properties
             fr = new FileReader(System.getProperty("user.dir") + "\\Configuration\\Locater.properties");
             prop.load(fr);
 
-            // ‑‑‑‑ NEW: ensure the correct EdgeDriver is on the path
+            // Ensure correct msedgedriver.exe is present
             WebDriverManager.edgedriver().setup();
 
-            // ‑‑‑‑ NEW: run Microsoft Edge in headless mode so Jenkins (no GUI) works
+            // Build EdgeOptions for Jenkins/non‑GUI
             EdgeOptions options = new EdgeOptions();
-            options.setBinary("C:\Program Files(x86)\Microsoft\Edge\Application\msedge.exe");
-            options.addArguments("--headless=new");      // Edge 109+; use "--headless" for older
+            options.addArguments("--headless=new");            // headless mode (Edge 109+)
             options.addArguments("--disable-gpu");
             options.addArguments("--window-size=1920,1080");
-            // options.addArguments("--no-sandbox");      // uncomment only if you still get crash
 
-            driver = new EdgeDriver(options);              // pass the options here
+            // Dynamically choose the Edge binary that exists
+            Path edge64 = Paths.get("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
+            Path edge32 = Paths.get("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+            if (Files.exists(edge64)) {
+                options.setBinary(edge64.toString());
+            } else if (Files.exists(edge32)) {
+                options.setBinary(edge32.toString());
+            } else {
+                throw new IllegalStateException("Microsoft Edge is not installed on this machine – please install it or update the path in LoginStepDefinition");
+            }
+
+            driver = new EdgeDriver(options);
             driver.manage().window().maximize();
         }
     }
 
+    // ------------------------------------------------------------------
+    //  Step definitions
+    // ------------------------------------------------------------------
     @Given("Browser is open")
     public void browser_is_open() {
         System.out.println("Browser is open");
-        // driver.get(prop.getProperty("website"));
     }
 
     @And("User is on login page")
@@ -251,7 +268,7 @@ public class LoginStepDefinition {
     public void user_enter_username_and_password(String username, String password) throws InterruptedException, IOException, TesseractException {
 
         loginpage = new LoginPF(driver);
-        int maxAttempts = 5;  // Set the maximum number of login attempts
+        int maxAttempts = 5;  // retry on captcha failure
         int attempt = 0;
         boolean loginSuccessful = false;
 
@@ -262,56 +279,47 @@ public class LoginStepDefinition {
 
             loginpage.enterUsername(username);
             loginpage.enterPassword(password);
-
             Thread.sleep(500);
 
             try {
-                WebElement imagepath = driver.findElement(By.xpath(prop.getProperty("Captcha")));
-                File src = imagepath.getScreenshotAs(OutputType.FILE);
-
+                // ------------------ Captcha processing ------------------
+                WebElement image = driver.findElement(By.xpath(prop.getProperty("Captcha")));
+                File src = image.getScreenshotAs(OutputType.FILE);
                 String path = System.getProperty("user.dir") + "\\Screenshot\\captcha.png";
                 FileHandler.copy(src, new File(path));
 
-                Thread.sleep(500);
+                ITesseract tesseract = new Tesseract();
+                String text = tesseract.doOCR(new File(path));
+                System.out.println("Captcha recognized: " + text);
 
-                ITesseract image = new Tesseract();
-                String Imagetext = image.doOCR(new File(path));
-                System.out.println("Captcha recognized: " + Imagetext);
-
-                // Retry if captcha recognition fails
-                if (Imagetext.isBlank() || Imagetext.length() < 4) {
-                    System.out.println("Captcha not recognized properly, retrying...");
+                if (text.isBlank() || text.trim().length() < 4) {
+                    System.out.println("Captcha not recognized, retrying...");
                     continue;
                 }
 
-                driver.findElement(By.xpath(prop.getProperty("Captcha_testfield"))).sendKeys(Imagetext);
+                driver.findElement(By.xpath(prop.getProperty("Captcha_testfield"))).sendKeys(text.trim());
                 Thread.sleep(1000);
                 driver.findElement(By.xpath(prop.getProperty("Login_button"))).click();
                 Thread.sleep(1000);
 
-                // Check if the dropdown is present to confirm successful login
+                // ------------------ Validate login ------------------
                 try {
                     WebElement selecter = driver.findElement(By.xpath(prop.getProperty("Relo_india")));
-                    Select dropdown = new Select(selecter);
-                    dropdown.selectByVisibleText("Relo-India");
-                    loginSuccessful = true;  // Login successful when dropdown is found and selected
-                    System.out.println("Login successful on attempt: " + attempt);
+                    new Select(selecter).selectByVisibleText("Relo-India");
+                    loginSuccessful = true;
+                    System.out.println("Login successful on attempt " + attempt);
                 } catch (NoSuchElementException e) {
-                    System.out.println("Dropdown 'Relo-India' not found, retrying login...");
-                    driver.navigate().refresh();  // Refresh page to retry login
-                    continue;  // Retry login
+                    System.out.println("Dropdown not found – retrying...");
+                    continue;
                 }
 
             } catch (UnhandledAlertException e) {
-                System.out.println("Invalid captcha entered, retrying...");
-            } catch (IOException e) {
-                System.out.println("Error in captcha recognition process, retrying...");
+                System.out.println("Alert appeared (likely bad captcha) – retrying...");
             }
+        }
 
-            if (!loginSuccessful && attempt >= maxAttempts) {
-                System.out.println("Login failed after maximum attempts.");
-                throw new RuntimeException("Failed to login after " + maxAttempts + " attempts");
-            }
+        if (!loginSuccessful) {
+            throw new RuntimeException("Login failed after " + maxAttempts + " attempts");
         }
     }
 
@@ -319,12 +327,8 @@ public class LoginStepDefinition {
     public void select_the_company_and_business_line(DataTable dataTable) throws InterruptedException {
         Thread.sleep(1000);
         Map<String, String> data = dataTable.asMaps(String.class, String.class).get(0);
-        String company = data.get("company");
-        loginpage.selectcompany(company);
-
-        Map<String, String> data1 = dataTable.asMaps(String.class, String.class).get(0);
-        String Business = data1.get("business_line");
-        loginpage.selectBusiness(Business);
+        loginpage.selectcompany(data.get("company"));
+        loginpage.selectBusiness(data.get("business_line"));
     }
 
     @Given("I click on submit button")
@@ -337,7 +341,6 @@ public class LoginStepDefinition {
         String actualTitle = driver.getTitle();
         System.out.println(actualTitle);
         Thread.sleep(1000);
-        String expectedTitle = "[Relo Writer] Dashboard";
-        assertEquals(expectedTitle, actualTitle);
+        assertEquals("[Relo Writer] Dashboard", actualTitle);
     }
 }
