@@ -1,3 +1,4 @@
+<!--
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -151,4 +152,167 @@
             </plugin>
         </plugins>
     </build>
+</project>
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>cucumber-selenium-project</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!--  Global properties                                                 -->
+  <!-- ------------------------------------------------------------------ -->
+  <properties>
+    <!-- Java version -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Library versions -->
+    <cucumber.version>7.17.0</cucumber.version>
+    <selenium.version>4.18.1</selenium.version>
+    <tess4j.version>4.5.5</tess4j.version>
+    <wdm.version>5.7.0</wdm.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <testng.version>7.7.1</testng.version>
+    <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
+    <surefire.plugin.version>2.22.2</surefire.plugin.version>
+  </properties>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!--  Repositories (central already default; kept for clarity)          -->
+  <!-- ------------------------------------------------------------------ -->
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!--  Dependencies                                                      -->
+  <!-- ------------------------------------------------------------------ -->
+  <dependencies>
+
+    <!-- Cucumber core -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Cucumber TestNG glue -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- TestNG -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Selenium -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+    <!-- WebDriverManager -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${wdm.version}</version>
+    </dependency>
+
+    <!-- Tess4J for OCR -->
+    <dependency>
+      <groupId>net.sourceforge.tess4j</groupId>
+      <artifactId>tess4j</artifactId>
+      <version>${tess4j.version}</version>
+    </dependency>
+
+    <!-- Simple SLF4J binding to silence logger warnings -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Optional: maven-cucumber-reporting as a library (not strictly required) -->
+    <dependency>
+      <groupId>net.masterthought</groupId>
+      <artifactId>maven-cucumber-reporting</artifactId>
+      <version>${cucumber.reporting.plugin.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!--  Build Plugins                                                     -->
+  <!-- ------------------------------------------------------------------ -->
+  <build>
+    <plugins>
+
+      <!-- Single, consolidated Surefire plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.plugin.version}</version>
+
+        <configuration>
+          <!-- run only the TestNG Cucumber runner -->
+          <includes>
+            <include>**/RunCucumberTestNG.java</include>
+          </includes>
+
+          <!-- tell Surefire to use TestNG (no XML suite needed) -->
+          <properties>
+            <property>
+              <name>listener</name>
+              <value>io.cucumber.testng.TestNGCucumberListener</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+
+      <!-- Cucumber HTML/JSON report generator -->
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>${cucumber.reporting.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>cucumber-report</id>
+            <phase>verify</phase>
+            <goals><goal>generate</goal></goals>
+            <configuration>
+              <projectName>Cucumber Selenium Project</projectName>
+              <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+              <jsonFiles>
+                <param>${project.build.directory}/cucumber-reports/Cucumber.json</param>
+              </jsonFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
 </project>
