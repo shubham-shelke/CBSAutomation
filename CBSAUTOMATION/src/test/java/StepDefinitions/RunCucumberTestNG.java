@@ -43,8 +43,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/features",
     glue = "StepDefinitions",
-    plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"},
-    monochrome = true
+    plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json"}
 )
 public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
 }
+
