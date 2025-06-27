@@ -10,9 +10,9 @@
   <artifactId>cucumber-selenium-project</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <!-- ================================================================ -->
-  <!--  Properties (Java 17 & all version placeholders)                 -->
-  <!-- ================================================================ -->
+  <!-- =============================================================== -->
+  <!--  Properties                                                     -->
+  <!-- =============================================================== -->
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
@@ -27,19 +27,19 @@
     <testng.version>7.10.2</testng.version>
   </properties>
 
-  <!-- ================================================================ -->
-  <!--  Dependencies                                                    -->
-  <!-- ================================================================ -->
+  <!-- =============================================================== -->
+  <!--  Dependencies                                                   -->
+  <!-- =============================================================== -->
   <dependencies>
 
-    <!-- Masterthought Cucumber reporting JAR -->
+    <!-- Masterthought Cucumber reporting -->
     <dependency>
       <groupId>net.masterthought</groupId>
       <artifactId>cucumber-reporting</artifactId>
       <version>${cucumber.reporting.version}</version>
     </dependency>
 
-    <!-- Cucumber -->
+    <!-- Cucumber JVM -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
@@ -49,14 +49,22 @@
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>   <!-- ★ added -->
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit-platform-engine</artifactId>
       <version>${cucumber.version}</version>
+      <scope>test</scope>
     </dependency>
 
-    <!-- Selenium & Drivers -->
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -73,7 +81,7 @@
       <version>${selenium.version}</version>
     </dependency>
 
-    <!-- JUnit & TestNG -->
+    <!-- Test frameworks -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -87,7 +95,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Misc libs -->
+    <!-- Misc libraries -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -172,9 +180,9 @@
     </dependency>
   </dependencies>
 
-  <!-- ================================================================ -->
-  <!--  Build section                                                   -->
-  <!-- ================================================================ -->
+  <!-- =============================================================== -->
+  <!--  Build                                                          -->
+  <!-- =============================================================== -->
   <build>
     <plugins>
 
@@ -186,6 +194,7 @@
         <configuration>
           <includes>
             <include>**/CucumberTestRunner.java</include>
+            <include>**/RunCucumberTestNG.java</include>
           </includes>
           <systemPropertyVariables>
             <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
@@ -238,7 +247,7 @@
     </plugins>
   </build>
 
-  <!-- optional corporate repo; leave if you need it -->
+  <!-- Optional corporate repo -->
   <repositories>
     <repository>
       <id>some-repository</id>
