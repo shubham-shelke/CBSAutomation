@@ -231,6 +231,29 @@
 </executions>
 </plugin>
   -->
+
+  <plugin>
+  <groupId>net.masterthought</groupId>
+  <artifactId>maven-cucumber-reporting</artifactId>
+  <version>${cucumber.reporting.version}</version>
+  <executions>
+    <execution>
+      <id>cucumber-report</id>
+      <phase>verify</phase>
+      <goals>
+        <goal>generate</goal>
+      </goals>
+      <configuration>
+        <projectName>Cucumber Selenium Project</projectName>
+        <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+        <jsonFiles>
+          <param>${project.build.directory}/cucumber-reports/Cucumber.json</param>
+        </jsonFiles>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+
 </plugins>
 </build>
 </project>
