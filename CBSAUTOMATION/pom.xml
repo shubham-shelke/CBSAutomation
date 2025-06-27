@@ -10,9 +10,9 @@
   <artifactId>cucumber-selenium-project</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <!-- ----------------------------------------------------------------- -->
-  <!--  Properties (Java 17 & all version placeholders)                  -->
-  <!-- ----------------------------------------------------------------- -->
+  <!-- ================================================================ -->
+  <!--  Properties (Java 17 & all version placeholders)                 -->
+  <!-- ================================================================ -->
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
@@ -24,15 +24,15 @@
     <webdrivermanager.version>5.8.0</webdrivermanager.version>
     <extent.report.version>5.1.0</extent.report.version>
     <cucumber.reporting.version>5.8.1</cucumber.reporting.version>
-    <testng.version>7.10.2</testng.version>   <!-- 🔹 added missing property -->
+    <testng.version>7.10.2</testng.version>
   </properties>
 
-  <!-- ----------------------------------------------------------------- -->
-  <!--  Dependencies  (none removed, only duplicates fixed)              -->
-  <!-- ----------------------------------------------------------------- -->
+  <!-- ================================================================ -->
+  <!--  Dependencies                                                    -->
+  <!-- ================================================================ -->
   <dependencies>
 
-    <!-- Masterthought Cucumber reporting JAR  -->
+    <!-- Masterthought Cucumber reporting JAR -->
     <dependency>
       <groupId>net.masterthought</groupId>
       <artifactId>cucumber-reporting</artifactId>
@@ -87,7 +87,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Misc libs you listed -->
+    <!-- Misc libs -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -172,9 +172,9 @@
     </dependency>
   </dependencies>
 
-  <!-- ----------------------------------------------------------------- -->
-  <!--  Build section (single Surefire & single report plugin)           -->
-  <!-- ----------------------------------------------------------------- -->
+  <!-- ================================================================ -->
+  <!--  Build section                                                   -->
+  <!-- ================================================================ -->
   <build>
     <plugins>
 
