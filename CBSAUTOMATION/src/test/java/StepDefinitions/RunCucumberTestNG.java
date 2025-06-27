@@ -18,8 +18,10 @@ import io.cucumber.testng.CucumberOptions;
     plugin = {
        "pretty",
         "junit:target/JunitReports/reports.xml",
-        "json:target/JsonReports/reports.json",
-       "html:target/HtmlReports.html"
+       //  "json:target/JsonReports/reports.json",
+       // "html:target/HtmlReports.html"
+         "html:target/cucumber-reports/report.html",
+        "json:target/cucumber-reports/Cucumber.json"
    },
     monochrome = true ,
 //    tags = "@Login or @SurveyDetails or @Pricing or @Approver "
