@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
   <artifactId>cucumber-selenium-project</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  <!-- ----------------------------------------------------------------- -->
+  <!--  Properties (Java 17 & all version placeholders)                  -->
+  <!-- ----------------------------------------------------------------- -->
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+
     <cucumber.version>7.17.0</cucumber.version>
     <junit.version>4.13.2</junit.version>
     <selenium.version>4.18.1</selenium.version>
@@ -18,16 +24,22 @@
     <webdrivermanager.version>5.8.0</webdrivermanager.version>
     <extent.report.version>5.1.0</extent.report.version>
     <cucumber.reporting.version>5.8.1</cucumber.reporting.version>
+    <testng.version>7.10.2</testng.version>   <!-- 🔹 added missing property -->
   </properties>
 
+  <!-- ----------------------------------------------------------------- -->
+  <!--  Dependencies  (none removed, only duplicates fixed)              -->
+  <!-- ----------------------------------------------------------------- -->
   <dependencies>
+
+    <!-- Masterthought Cucumber reporting JAR  -->
     <dependency>
       <groupId>net.masterthought</groupId>
       <artifactId>cucumber-reporting</artifactId>
       <version>${cucumber.reporting.version}</version>
     </dependency>
 
-    <!-- Cucumber Dependencies -->
+    <!-- Cucumber -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
@@ -44,7 +56,7 @@
       <version>${cucumber.version}</version>
     </dependency>
 
-    <!-- Selenium Dependencies -->
+    <!-- Selenium & Drivers -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -61,43 +73,43 @@
       <version>${selenium.version}</version>
     </dependency>
 
-    <!-- JUnit -->
+    <!-- JUnit & TestNG -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-    <!-- JSON parsing -->
+    <!-- Misc libs you listed -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.12.5</version>
     </dependency>
-
-    <!-- OCR -->
     <dependency>
       <groupId>net.sourceforge.tess4j</groupId>
       <artifactId>tess4j</artifactId>
       <version>${tess4j.version}</version>
     </dependency>
-
-    <!-- WebDriverManager -->
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>${webdrivermanager.version}</version>
     </dependency>
-
-    <!-- Extent Reports -->
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>${extent.report.version}</version>
     </dependency>
 
-    <!-- Apache POI -->
+    <!-- Apache POI, HTTP, IO, etc. -->
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
@@ -133,8 +145,6 @@
       <artifactId>openxml4j</artifactId>
       <version>1.0-beta</version>
     </dependency>
-
-    <!-- Mail -->
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>javax.mail-api</artifactId>
@@ -145,30 +155,16 @@
       <artifactId>javax.mail</artifactId>
       <version>1.6.2</version>
     </dependency>
-
-    <!-- HTTP Client -->
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <version>4.5.13</version>
     </dependency>
-
-    <!-- TestNG -->
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>${testng.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Appium -->
     <dependency>
       <groupId>io.appium</groupId>
       <artifactId>java-client</artifactId>
       <version>8.5.1</version>
     </dependency>
-
-    <!-- Logging -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
@@ -176,16 +172,13 @@
     </dependency>
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>some-repository</id>
-      <url>https://your-repository-url</url>
-    </repository>
-  </repositories>
-
+  <!-- ----------------------------------------------------------------- -->
+  <!--  Build section (single Surefire & single report plugin)           -->
+  <!-- ----------------------------------------------------------------- -->
   <build>
     <plugins>
-      <!-- Maven Surefire Plugin -->
+
+      <!-- Surefire -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -200,7 +193,7 @@
         </configuration>
       </plugin>
 
-      <!-- Maven Cucumber Reporting -->
+      <!-- Masterthought report -->
       <plugin>
         <groupId>net.masterthought</groupId>
         <artifactId>maven-cucumber-reporting</artifactId>
@@ -209,17 +202,14 @@
           <execution>
             <id>cucumber-report</id>
             <phase>verify</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
+            <goals><goal>generate</goal></goals>
             <configuration>
               <projectName>Cucumber Selenium Project</projectName>
-              <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+              <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
               <jsonFiles>
-                <param>${project.build.directory}/cucumber.json</param>
+                <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
               </jsonFiles>
               <buildNumber>1</buildNumber>
-              <skip>false</skip>
             </configuration>
           </execution>
         </executions>
@@ -247,5 +237,13 @@
       </plugin>
     </plugins>
   </build>
+
+  <!-- optional corporate repo; leave if you need it -->
+  <repositories>
+    <repository>
+      <id>some-repository</id>
+      <url>https://your-repository-url</url>
+    </repository>
+  </repositories>
 
 </project>
