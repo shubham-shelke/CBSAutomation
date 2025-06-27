@@ -16,6 +16,12 @@
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
     </properties>
 
+<properties>
+  <maven.compiler.source>17</maven.compiler.source>
+  <maven.compiler.target>17</maven.compiler.target>
+</properties>
+
+         
     <repositories>
         <repository>
             <id>central</id>
