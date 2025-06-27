@@ -14,9 +14,7 @@
         <cucumber.reporting.plugin.version>5.8.1</cucumber.reporting.plugin.version>
         <selenium.version>4.18.1</selenium.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
-    </properties>
-
-<properties>
+   
   <maven.compiler.source>17</maven.compiler.source>
   <maven.compiler.target>17</maven.compiler.target>
 </properties>
