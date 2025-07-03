@@ -22,7 +22,7 @@ import io.cucumber.testng.CucumberOptions;
        // "html:target/HtmlReports.html"
          "html:target/cucumber-reports/report.html",
         // "json:target/cucumber-reports/reports.json",
-       "json:target/cucumber-reports/report."
+       "json:target/cucumber-reports/report.json"
    },
     monochrome = true ,
 //    tags = "@Login or @SurveyDetails or @Pricing or @Approver "
