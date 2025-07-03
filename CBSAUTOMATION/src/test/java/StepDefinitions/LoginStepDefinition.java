@@ -234,16 +234,16 @@ public class LoginStepDefinition {
             WebDriverManager.edgedriver().setup();
 
             // Build EdgeOptions for Jenkins/non‑GUI
-            // EdgeOptions options = new EdgeOptions();
-            // options.addArguments("--headless=new");            // headless mode (Edge 109+)
-            // options.addArguments("--disable-gpu");
-            // options.addArguments("--window-size=1920,1080");
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--headless=new");            // headless mode (Edge 109+)
+            options.addArguments("--disable-gpu");
+            options.addArguments("--window-size=1920,1080");
 
-ChromeOptions options = new ChromeOptions();
-options.addArguments("--headless=new");
-options.addArguments("--disable-gpu");
-options.addArguments("--window-size=1920,1080");
-WebDriver driver = new ChromeDriver(options);
+// ChromeOptions options = new ChromeOptions();
+// options.addArguments("--headless=new");
+// options.addArguments("--disable-gpu");
+// options.addArguments("--window-size=1920,1080");
+// WebDriver driver = new ChromeDriver(options);
 
 
 
