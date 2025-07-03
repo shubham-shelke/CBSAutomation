@@ -236,11 +236,12 @@ public class LoginStepDefinition {
             // options.addArguments("--window-size=1920,1080");
 
 EdgeOptions options = new EdgeOptions();
-options.addArguments("--headless"); // Not --headless=new
+
 options.addArguments("--disable-gpu");
 options.addArguments("--window-size=1920,1080");
 
 WebDriver driver = new EdgeDriver(options);
+
 
             
             // Dynamically choose the Edge binary that exists
