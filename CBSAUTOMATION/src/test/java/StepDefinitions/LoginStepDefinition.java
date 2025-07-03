@@ -235,12 +235,12 @@ public class LoginStepDefinition {
             // options.addArguments("--disable-gpu");
             // options.addArguments("--window-size=1920,1080");
 
-EdgeOptions options = new EdgeOptions();
-
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless=new");
 options.addArguments("--disable-gpu");
 options.addArguments("--window-size=1920,1080");
+WebDriver driver = new ChromeDriver(options);
 
-WebDriver driver = new EdgeDriver(options);
 
 
             
