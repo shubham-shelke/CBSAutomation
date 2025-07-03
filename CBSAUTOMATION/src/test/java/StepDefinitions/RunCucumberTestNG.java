@@ -55,12 +55,12 @@ import org.testng.annotations.BeforeClass; // NEW
         "src\\test\\resources\\Features"
     },
     glue = {"StepDefinitions"},
-    plugin = {
-        "pretty",
-        "junit:target/JunitReports/reports.xml",
-        "html:target/cucumber-reports/report.html",
-        "json:target/cucumber-reports/report.json"
-    },
+   plugin = {
+    "pretty",
+    "junit:target/junit-reports/report.xml",
+    "html:target/html-reports/report.html",
+    "json:target/json-reports/report.json"
+   },
     monochrome = true,
     tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
 )
