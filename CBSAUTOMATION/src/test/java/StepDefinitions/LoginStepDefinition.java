@@ -230,11 +230,19 @@ public class LoginStepDefinition {
             WebDriverManager.edgedriver().setup();
 
             // Build EdgeOptions for Jenkins/non‑GUI
-            EdgeOptions options = new EdgeOptions();
-            options.addArguments("--headless=new");            // headless mode (Edge 109+)
-            options.addArguments("--disable-gpu");
-            options.addArguments("--window-size=1920,1080");
+            // EdgeOptions options = new EdgeOptions();
+            // options.addArguments("--headless=new");            // headless mode (Edge 109+)
+            // options.addArguments("--disable-gpu");
+            // options.addArguments("--window-size=1920,1080");
 
+EdgeOptions options = new EdgeOptions();
+options.addArguments("--headless"); // Not --headless=new
+options.addArguments("--disable-gpu");
+options.addArguments("--window-size=1920,1080");
+
+WebDriver driver = new EdgeDriver(options);
+
+            
             // Dynamically choose the Edge binary that exists
             Path edge64 = Paths.get("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
             Path edge32 = Paths.get("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
