@@ -235,7 +235,7 @@ public class LoginStepDefinition {
 
             // Build EdgeOptions for Jenkins/non‑GUI
             EdgeOptions options = new EdgeOptions();
-            options.addArguments("--headless=new");            // headless mode (Edge 109+)
+            options.addArguments("--headless");            // headless mode (Edge 109+)
             options.addArguments("--disable-gpu");
             options.addArguments("--window-size=1920,1080");
 
