@@ -447,7 +447,7 @@ public class LoginStepDefinition {
 
             loginpage.enterUsername(username);
             loginpage.enterPassword(password);
-            Thread.sleep(500);
+            Thread.sleep(2000);
 
             try {
                 WebElement imagepath = driver.findElement(By.xpath(prop.getProperty("Captcha")));
@@ -458,7 +458,7 @@ public class LoginStepDefinition {
                 FileHandler.copy(src, new File(path));
                 System.out.println("Captcha image saved to: " + path);
 
-                Thread.sleep(500);
+                Thread.sleep(2000);
 
                 String Imagetext = "";
 
