@@ -298,8 +298,8 @@ public class LoginStepDefinition {
                 // ------------------ Captcha processing ------------------
                 WebElement image = driver.findElement(By.xpath(prop.getProperty("Captcha")));
                 File src = image.getScreenshotAs(OutputType.FILE);
-                // String path = System.getProperty("user.dir") + "\\Screenshot\\captcha.png";
-                String path = "D:\CaptchaPath";
+                String path = System.getProperty("user.dir") + "\\Screenshot\\captcha.png";
+                // String path = "D:\CaptchaPath";
                 FileHandler.copy(src, new File(path));
 
                 ITesseract tesseract = new Tesseract();
