@@ -628,14 +628,15 @@ public class LoginStepDefinition {
 
             loginpage.enterUsername(username);
             loginpage.enterPassword(password);
-            Thread.sleep(2500);
+            Thread.sleep(500);
 
             try {
+                Thread.sleep(2000);
                 WebElement captchaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
                         By.xpath(prop.getProperty("Captcha"))));
 
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", captchaElement);
-                Thread.sleep(2500);
+                Thread.sleep(1500);
 
                 File src = captchaElement.getScreenshotAs(OutputType.FILE);
                 String path = "D:\\CaptchaImages\\captcha.png";  
@@ -668,7 +669,7 @@ public class LoginStepDefinition {
                 }
 
                 driver.findElement(By.xpath(prop.getProperty("Captcha_testfield"))).sendKeys(Imagetext);
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 driver.findElement(By.xpath(prop.getProperty("Login_button"))).click();
                 Thread.sleep(1000);
 
