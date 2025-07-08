@@ -369,7 +369,6 @@
 
 
 
-
 package StepDefinitions;
 
 import static org.testng.Assert.assertEquals;
@@ -377,21 +376,17 @@ import static org.testng.Assert.assertEquals;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -438,10 +433,9 @@ public class LoginStepDefinition {
 
     @When("^user enter (.*) and (.*) and clicks on login$")
     public void user_enter_username_and_password(String username, String password)
-            throws InterruptedException, IOException {
+            throws InterruptedException, IOException, TesseractException {
 
         loginpage = new LoginPF(driver);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         int maxAttempts = 5;
         int attempt = 0;
         boolean loginSuccessful = false;
@@ -456,35 +450,41 @@ public class LoginStepDefinition {
             Thread.sleep(500);
 
             try {
-                WebElement captchaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath(prop.getProperty("Captcha"))));
+                WebElement imagepath = driver.findElement(By.xpath(prop.getProperty("Captcha")));
+                File src = imagepath.getScreenshotAs(OutputType.FILE);
 
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", captchaElement);
-                Thread.sleep(500);
-
-                File src = captchaElement.getScreenshotAs(OutputType.FILE);
-                String path = "D:\\CaptchaImages\\captcha.png";  // You can change this as needed
+                // Use Jenkins-safe path (target folder)
+                String path = System.getProperty("user.dir") + "\\target\\captcha.png";
                 FileHandler.copy(src, new File(path));
-                System.out.println("Captcha image saved at: " + path);
+                System.out.println("Captcha image saved to: " + path);
+
+                Thread.sleep(500);
 
                 String Imagetext = "";
 
-                File imageFile = new File(path);
-                if (!imageFile.exists() || imageFile.length() < 1000) {
-                    System.out.println("❌ Captcha image is blank or too small, retrying...");
-                    continue;
-                }
+                // Optional: Skip OCR via Maven property in Jenkins
+                boolean skipOCR = Boolean.parseBoolean(System.getProperty("skip.ocr", "false"));
+                if (skipOCR) {
+                    System.out.println("⚠️ Skipping OCR in Jenkins run");
+                    Imagetext = "dummyCaptcha";
+                } else {
+                    File imageFile = new File(path);
+                    if (!imageFile.exists()) {
+                        System.out.println("❌ Captcha image not found at: " + path);
+                        continue;
+                    }
 
-                ITesseract image = new Tesseract();
-                image.setDatapath("C:\Program Files\tesseract-main\tessdata"); // adjust if needed
-                image.setLanguage("eng");
+                    ITesseract image = new Tesseract();
+                    image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); // Update if needed
+                    image.setLanguage("eng");
 
-                try {
-                    Imagetext = image.doOCR(imageFile).trim();
-                    System.out.println("Captcha recognized: " + Imagetext);
-                } catch (TesseractException | Error e) {
-                    System.out.println("❌ OCR failed: " + e.getMessage());
-                    continue;
+                    try {
+                        Imagetext = image.doOCR(imageFile).trim();
+                        System.out.println("Captcha recognized: " + Imagetext);
+                    } catch (TesseractException | Error e) {
+                        System.out.println("❌ OCR failed: " + e.getMessage());
+                        continue;
+                    }
                 }
 
                 if (Imagetext.isBlank() || Imagetext.length() < 4) {
