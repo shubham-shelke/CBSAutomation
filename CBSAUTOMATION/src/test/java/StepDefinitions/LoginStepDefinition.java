@@ -658,7 +658,7 @@ public class LoginStepDefinition {
                     Imagetext = image.doOCR(imageFile).trim();
                     System.out.println("Captcha recognized: " + Imagetext);
                 } catch (TesseractException | Error e) {
-                    System.out.println("❌ OCR failed: " + e.getMessage());
+                    System.out.println(" OCR failed: " + e.getMessage());
                     continue;
                 }
 
@@ -677,20 +677,20 @@ public class LoginStepDefinition {
                     Select dropdown = new Select(selecter);
                     dropdown.selectByVisibleText("Relo-India");
                     loginSuccessful = true;
-                    System.out.println("✅ Login successful on attempt: " + attempt);
+                    System.out.println(" Login successful on attempt: " + attempt);
                 } catch (NoSuchElementException e) {
-                    System.out.println("❌ Dropdown 'Relo-India' not found, retrying login...");
+                    System.out.println(" Dropdown 'Relo-India' not found, retrying login...");
                     driver.navigate().refresh();
                 }
 
             } catch (UnhandledAlertException e) {
-                System.out.println("⚠️ Unhandled alert - possibly invalid captcha, retrying...");
+                System.out.println(" Unhandled alert - possibly invalid captcha, retrying...");
             } catch (IOException e) {
-                System.out.println("⚠️ Error during captcha screenshot saving.");
+                System.out.println(" Error during captcha screenshot saving.");
             }
 
             if (!loginSuccessful && attempt >= maxAttempts) {
-                System.out.println("❌ Login failed after maximum attempts.");
+                System.out.println(" Login failed after maximum attempts.");
                 throw new RuntimeException("Failed to login after " + maxAttempts + " attempts");
             }
         }
