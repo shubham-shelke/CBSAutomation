@@ -502,9 +502,9 @@
 //                     Select dropdown = new Select(selecter);
 //                     dropdown.selectByVisibleText("Relo-India");
 //                     loginSuccessful = true;
-//                     System.out.println("✅ Login successful on attempt: " + attempt);
+//                     System.out.println(" Login successful on attempt: " + attempt);
 //                 } catch (NoSuchElementException e) {
-//                     System.out.println("❌ Dropdown 'Relo-India' not found, retrying login...");
+//                     System.out.println(" Dropdown 'Relo-India' not found, retrying login...");
 //                     driver.navigate().refresh();
 //                 }
 
@@ -646,7 +646,7 @@ public class LoginStepDefinition {
 
                 File imageFile = new File(path);
                 if (!imageFile.exists() || imageFile.length() < 1000) {
-                    System.out.println("❌ Captcha image is blank or too small, retrying...");
+                    System.out.println(" Captcha image is blank or too small, retrying...");
                     continue;
                 }
 
