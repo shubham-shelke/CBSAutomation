@@ -628,17 +628,17 @@ public class LoginStepDefinition {
 
             loginpage.enterUsername(username);
             loginpage.enterPassword(password);
-            Thread.sleep(500);
+            Thread.sleep(2000);
 
             try {
                 WebElement captchaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
                         By.xpath(prop.getProperty("Captcha"))));
 
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", captchaElement);
-                Thread.sleep(500);
+                Thread.sleep(2000);
 
                 File src = captchaElement.getScreenshotAs(OutputType.FILE);
-                String path = "D:\\CaptchaImages\\captcha.png";  // You can change this as needed
+                String path = "D:\\CaptchaImages\\captcha.png";  
                 FileHandler.copy(src, new File(path));
                 System.out.println("Captcha image saved at: " + path);
 
