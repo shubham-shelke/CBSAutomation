@@ -665,10 +665,15 @@ public class LoginStepDefinition {
                 //     continue;
                 // }
 
-                        ITesseract image = new Tesseract();
-// image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
-image.setDatapath("C:\\Program Files\\Tesseract-OCR");
+//                         ITesseract image = new Tesseract();
+// // image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+// image.setDatapath("C:\\Program Files\\Tesseract-OCR");
+// image.setLanguage("eng");
+
+ITesseract image = new Tesseract();
+image.setDatapath("C:\\Program Files\\tesseract-main");
 image.setLanguage("eng");
+
 
 try {
     // String text = image.doOCR(imageFile).trim();  // captchaFile should be your image File object
