@@ -646,13 +646,13 @@ public class LoginStepDefinition {
                 String Imagetext = "";
 
                 File imageFile = new File(path);
-                if (!imageFile.exists() || imageFile.length() < 2000) {
+                if (!imageFile.exists() || imageFile.length() > 2000) {
                     System.out.println(" Captcha image is blank or too small, retrying...");
                     continue;
                 }
 
                 ITesseract image = new Tesseract();
-                image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); // adjust if needed
+                image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); 
                 image.setLanguage("eng");
 
                 try {
