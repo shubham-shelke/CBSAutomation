@@ -666,7 +666,8 @@ public class LoginStepDefinition {
                 // }
 
                         ITesseract image = new Tesseract();
-image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+// image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+image.setDatapath("C:\\Program Files\\Tesseract-OCR");
 image.setLanguage("eng");
 
 try {
