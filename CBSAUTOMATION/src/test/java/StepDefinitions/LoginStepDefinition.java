@@ -653,17 +653,29 @@ public class LoginStepDefinition {
                     continue;
                 }
 
-                ITesseract  = new Tesseract();
-                .setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); 
-                .setLanguage("eng");
+                // ITesseract  = new Tesseract();
+                // .setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); 
+                // .setLanguage("eng");
 
-                try {
-                    text = .doOCR(File).trim();
-                    System.out.println("Captcha recognized: " + text);
-                } catch (TesseractException | Error e) {
-                    System.out.println(" OCR failed: " + e.getMessage());
-                    continue;
-                }
+                // try {
+                //     text = .doOCR(File).trim();
+                //     System.out.println("Captcha recognized: " + text);
+                // } catch (TesseractException | Error e) {
+                //     System.out.println(" OCR failed: " + e.getMessage());
+                //     continue;
+                // }
+
+                        ITesseract image = new Tesseract();
+image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+image.setLanguage("eng");
+
+try {
+    String text = image.doOCR(captchaFile).trim();  // captchaFile should be your image File object
+    System.out.println("Captcha recognized: " + text);
+} catch (TesseractException e) {
+    System.out.println("OCR failed: " + e.getMessage());
+}
+
 
                 if (Imagetext.isBlank() || Imagetext.length() < 4) {
                     System.out.println("Captcha not recognized properly, retrying...");
