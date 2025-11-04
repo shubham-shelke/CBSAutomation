@@ -670,7 +670,7 @@ image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
 image.setLanguage("eng");
 
 try {
-    String text = image.doOCR(captchaFile).trim();  // captchaFile should be your image File object
+    String text = image.doOCR(path).trim();  // captchaFile should be your image File object
     System.out.println("Captcha recognized: " + text);
 } catch (TesseractException e) {
     System.out.println("OCR failed: " + e.getMessage());
