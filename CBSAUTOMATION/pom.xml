@@ -1,279 +1,14 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.example</groupId>
-  <artifactId>cucumber-selenium-project</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <!-- =============================================================== -->
-  <!--  Properties                                                     -->
-  <!-- =============================================================== -->
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-
-    <cucumber.version>7.17.0</cucumber.version>
-    <junit.version>4.13.2</junit.version>
-    <selenium.version>4.18.1</selenium.version>
-    <tess4j.version>5.7.0</tess4j.version>
-    <webdrivermanager.version>5.8.0</webdrivermanager.version>
-    <extent.report.version>5.1.0</extent.report.version>
-    <cucumber.reporting.version>5.8.1</cucumber.reporting.version>
-    <testng.version>7.10.2</testng.version>
-  </properties>
-
-  <!-- =============================================================== -->
-  <!--  Dependencies                                                   -->
-  <!-- =============================================================== -->
-  <dependencies>
-
-    <!-- Masterthought Cucumber reporting -->
-    <dependency>
-      <groupId>net.masterthought</groupId>
-      <artifactId>cucumber-reporting</artifactId>
-      <version>${cucumber.reporting.version}</version>
-    </dependency>
-
-    <!-- Cucumber JVM -->
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>${cucumber.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-testng</artifactId>   <!-- ★ added -->
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit-platform-engine</artifactId>
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Selenium -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-firefox-driver</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-edge-driver</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-
-    <!-- Test frameworks -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>${testng.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Misc libraries -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.12.5</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sourceforge.tess4j</groupId>
-      <artifactId>tess4j</artifactId>
-      <version>${tess4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>${webdrivermanager.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.aventstack</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>${extent.report.version}</version>
-    </dependency>
-
-    <!-- Apache POI, HTTP, IO, etc. -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml-schemas</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.11.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>fluent-hc</artifactId>
-      <version>4.5.14</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-scratchpad</artifactId>
-      <version>5.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>openxml4j</artifactId>
-      <version>1.0-beta</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>javax.mail-api</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.mail</groupId>
-      <artifactId>javax.mail</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.13</version>
-    </dependency>
-    <dependency>
-      <groupId>io.appium</groupId>
-      <artifactId>java-client</artifactId>
-      <version>8.5.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.14.1</version>
-    </dependency>
-  </dependencies>
-
-  <!-- =============================================================== -->
-  <!--  Build                                                          -->
-  <!-- =============================================================== -->
-  <build>
-    <plugins>
-
-      <!-- Surefire -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.2</version>
-        <configuration>
-          <includes>
-            <include>**/CucumberTestRunner.java</include>
-            <include>**/RunCucumberTestNG.java</include>
-          </includes>
-          <systemPropertyVariables>
-            <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
-
-      <!-- Masterthought report -->
-      <plugin>
-        <groupId>net.masterthought</groupId>
-        <artifactId>maven-cucumber-reporting</artifactId>
-        <version>${cucumber.reporting.version}</version>
-        <executions>
-          <execution>
-            <id>cucumber-report</id>
-            <phase>verify</phase>
-            <goals><goal>generate</goal></goals>
-            <configuration>
-              <projectName>Cucumber Selenium Project</projectName>
-              <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-              <jsonFiles>
-                <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
-              </jsonFiles>
-              <buildNumber>1</buildNumber>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Compiler -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-      </plugin>
-
-      <!-- Clean -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>3.1.0</version>
-      </plugin>
-
-      <!-- Jar -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.0</version>
-      </plugin>
-    </plugins>
-  </build>
-
-  <!-- Optional corporate repo -->
-  <repositories>
-    <repository>
-      <id>some-repository</id>
-      <url>https://your-repository-url</url>
-    </repository>
-  </repositories>
-
-</project> -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.example</groupId>
     <artifactId>cucumber-selenium-project</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- =============================================================== -->
-    <!-- Properties                                                      -->
-    <!-- =============================================================== -->
+    <!-- Properties -->
     <properties>
-        <!-- ✅ Added UTF-8 Encoding to prevent Jenkins 'unmappable character' errors -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
@@ -287,11 +22,8 @@
         <testng.version>7.10.2</testng.version>
     </properties>
 
-    <!-- =============================================================== -->
-    <!-- Dependencies                                                    -->
-    <!-- =============================================================== -->
+    <!-- Dependencies -->
     <dependencies>
-
         <!-- Masterthought Cucumber reporting -->
         <dependency>
             <groupId>net.masterthought</groupId>
@@ -299,27 +31,24 @@
             <version>${cucumber.reporting.version}</version>
         </dependency>
 
-        <!-- Cucumber JVM -->
+        <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
@@ -333,27 +62,24 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-edge-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
-        <!-- Test frameworks -->
+        <!-- Testing frameworks -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -367,92 +93,58 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.5</version>
         </dependency>
-
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
             <artifactId>tess4j</artifactId>
             <version>${tess4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extent.report.version}</version>
         </dependency>
 
-        <!-- Apache POI, HTTP, IO, etc. -->
+        <!-- Apache POI and utilities -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.1.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
-            <version>4.1.2</version>
-        </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>fluent-hc</artifactId>
             <version>4.5.14</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-scratchpad</artifactId>
-            <version>5.2.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>openxml4j</artifactId>
-            <version>1.0-beta</version>
-        </dependency>
-
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
             <version>1.6.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
-
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>8.5.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -460,12 +152,9 @@
         </dependency>
     </dependencies>
 
-    <!-- =============================================================== -->
-    <!-- Build                                                           -->
-    <!-- =============================================================== -->
+    <!-- Build -->
     <build>
         <plugins>
-
             <!-- Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -506,16 +195,11 @@
                 </executions>
             </plugin>
 
-            <!-- ✅ Compiler Plugin with UTF-8 Encoding -->
+            <!-- Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
 
             <!-- Clean -->
@@ -533,16 +217,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- Optional corporate repo -->
-    <repositories>
-        <repository>
-            <id>some-repository</id>
-            <url>https://your-repository-url</url>
-        </repository>
-    </repositories>
-
 </project>
-
-
-
