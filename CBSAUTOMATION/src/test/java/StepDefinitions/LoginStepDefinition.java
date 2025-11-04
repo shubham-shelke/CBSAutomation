@@ -646,7 +646,8 @@ public class LoginStepDefinition {
                 String Imagetext = "";
 
                 File imageFile = new File(path);
-                if (!imageFile.exists() || imageFile.length() > 2000) {
+                        Thread.sleep(5000);
+                if (!imageFile.exists() || imageFile.length() < 2000) {
                     System.out.println(" Captcha image is blank or too small, retrying...");
                     continue;
                 }
