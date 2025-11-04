@@ -649,17 +649,17 @@ public class LoginStepDefinition {
                         Thread.sleep(7000);
                 // if (!imageFile.exists() || imageFile.length() < 2000) {
                    if (!imageFile.exists()) {
-                    System.out.println(" Captcha image is blank or too small");
+                    System.out.println(" Captcha  is blank or too small");
                     continue;
                 }
 
-                ITesseract image = new Tesseract();
-                image.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); 
-                image.setLanguage("eng");
+                ITesseract  = new Tesseract();
+                .setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata"); 
+                .setLanguage("eng");
 
                 try {
-                    Imagetext = image.doOCR(imageFile).trim();
-                    System.out.println("Captcha recognized: " + Imagetext);
+                    text = .doOCR(File).trim();
+                    System.out.println("Captcha recognized: " + text);
                 } catch (TesseractException | Error e) {
                     System.out.println(" OCR failed: " + e.getMessage());
                     continue;
