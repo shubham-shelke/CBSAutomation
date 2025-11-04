@@ -147,9 +147,19 @@ public class EnquiryPF {
 	    
 	    public void selectTentivedate()
 	    {
-	    	waitForElementToBeClickable(Tentive_date);
-	    	driver.findElement(Tentive_date).click();
-	    	driver.findElement(Tentive_date).sendKeys(Keys.ARROW_DOWN);
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+// Wait for overlay to become invisible
+wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("overlay")));
+
+// Then click the date field
+WebElement dateInput = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='EnqTentDate']")));
+dateInput.click();
+
+			
+	    	// waitForElementToBeClickable(Tentive_date);
+	    	// driver.findElement(Tentive_date).click();
+	    	// driver.findElement(Tentive_date).sendKeys(Keys.ARROW_DOWN);
 	    	
 	    }
 	    
