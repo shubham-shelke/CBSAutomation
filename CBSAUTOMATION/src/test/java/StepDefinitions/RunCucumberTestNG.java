@@ -62,7 +62,8 @@ import org.testng.annotations.BeforeClass; // NEW
     "json:target/json-reports/cucumber.json"
    },
     monochrome = true,
-    tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
+    tags = "@Login or @Enquiry"
+    // tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
 )
 public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
 
