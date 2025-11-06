@@ -57,9 +57,12 @@ import org.testng.annotations.BeforeClass; // NEW
     glue = {"StepDefinitions"},
    plugin = {
     "pretty",
-    "junit:target/junit-reports/cucumber.xml",
-    "html:target/html-reports/cucumber.html",
+    // "junit:target/junit-reports/cucumber.xml",
+    // "html:target/html-reports/cucumber.html",
     // "json:target/json-reports/cucumber.json"
+
+           "junit:target/reports.xml",
+       "html:target/HtmlReports.html",
        "json:target/cucumber.json"
     
    },
