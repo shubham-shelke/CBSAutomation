@@ -37,7 +37,7 @@
 // public class RunCucumberTestNG extends AbstractTestNGCucumberTests{
 // }
 
-
+/*
 package StepDefinitions;
 
 import org.junit.runner.RunWith;
@@ -70,9 +70,7 @@ import org.testng.annotations.BeforeClass; // NEW
 )
 public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
 
-    /**
-     * Ensure the report directory exists before any tests run.
-     */
+   
     @BeforeClass(alwaysRun = true)
     public static void ensureReportDirectoryExists() {
         File reportDir = new File("target/cucumber-reports");
@@ -83,4 +81,40 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
         }
     }
 }
+*/
 
+
+package StepDefinitions;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.BeforeSuite;
+import java.io.File;
+
+@CucumberOptions(
+    features = "src/test/resources/Features",
+    glue = {"StepDefinitions"},
+    plugin = {
+        "pretty",
+        "junit:target/junit-reports/cucumber.xml",
+        "json:target/cucumber-reports/Cucumber.json",
+        "html:target/cucumber-reports/html-report"
+    },
+    monochrome = true,
+    tags = "@Login"
+)
+public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
+
+    /**
+     * Ensure the report directory exists before any tests run.
+     */
+    @BeforeSuite(alwaysRun = true)
+    public void ensureReportDirectoryExists() {
+        File reportDir = new File("target/cucumber-reports");
+        if (!reportDir.exists() && !reportDir.mkdirs()) {
+            throw new RuntimeException(
+                "Failed to create report directory: " + reportDir.getAbsolutePath()
+            );
+        }
+    }
+}
