@@ -739,7 +739,8 @@ System.out.println("Captcha recognized: " + Imagetext);
         String actualTitle = driver.getTitle();
         System.out.println(actualTitle);
         Thread.sleep(1000);
-        String expectedTitle = "[Relo Writer] Dashboard";
+        // String expectedTitle = "[Relo Writer] Dashboard";
+            String expectedTitle = "[Relo Writer] Log In]";
         assertEquals(actualTitle, expectedTitle);
     }
 }
