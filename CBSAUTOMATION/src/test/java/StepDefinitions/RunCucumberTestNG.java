@@ -22,7 +22,7 @@
 //        // "html:target/HtmlReports.html"
 //          "html:target/cucumber-reports/report.html",
 //         // "json:target/cucumber-reports/reports.json",
-       "json:target/cucumber-reports/report.json"
+       // "json:target/cucumber-reports/report.json"
 //    },
 //     monochrome = true ,
 // //    tags = "@Login or @SurveyDetails or @Pricing or @Approver "
@@ -60,7 +60,7 @@ import org.testng.annotations.BeforeClass; // NEW
     "junit:target/junit-reports/cucumber.xml",
     "html:target/html-reports/cucumber.html",
     // "json:target/json-reports/cucumber.json"
-    "json:target/cucumber.json"
+    // "json:target/cucumber.json"
    },
     monochrome = true,
     tags = "@Login"
