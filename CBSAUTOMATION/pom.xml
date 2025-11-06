@@ -190,8 +190,9 @@
                             <projectName>Cucumber Selenium Project</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
                             <jsonFiles>
-                                <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
+                                <jsonFile>${project.build.directory}/Jsonreports/reports.json</jsonFile>
                             </jsonFiles>
+
                             <buildNumber>1</buildNumber>
                         </configuration>
                     </execution>
