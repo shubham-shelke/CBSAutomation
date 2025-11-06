@@ -357,8 +357,12 @@ public void click_on_save_button() throws InterruptedException {
      String[] parts = enquiryInfo.split(":\\s+");
      String enquiryNo1 = parts[1];
      System.out.println(enquiryNo1);
-     String filePath = "D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\Configuration\\Locater.properties";
+     // String filePath = "D:\\CBS Automation\\CBSCucumber\\CBSAUTOMATION\\Configuration\\Locater.properties";
 	// String filePath ="C:\\Users\\shubham.shelke\\git\\repository\\CBSAUTOMATION\\Configuration\\Locater.properties";
+	String filePath = System.getProperty("user.dir") + "\\Configuration\\Locater.properties";
+	System.out.println("Looking for Locater.properties at: " + filePath);
+
+
      String enquiryNumberKey = "EnqNumber=";
      String enquiryNumber = "";
 
