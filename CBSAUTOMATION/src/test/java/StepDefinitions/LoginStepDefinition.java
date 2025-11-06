@@ -740,7 +740,7 @@ System.out.println("Captcha recognized: " + Imagetext);
         System.out.println(actualTitle);
         Thread.sleep(1000);
         // String expectedTitle = "[Relo Writer] Dashboard";
-            String expectedTitle = "[Relo Writer] Log In]";
+            String expectedTitle = "[Relo Writer] Log In";
         assertEquals(actualTitle, expectedTitle);
     }
 }
