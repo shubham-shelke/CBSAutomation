@@ -61,9 +61,8 @@ import org.testng.annotations.BeforeClass; // NEW
     // "html:target/html-reports/cucumber.html",
     // "json:target/json-reports/cucumber.json"
 
-       "json:target/cucumber-reports/Cucumber.json",
+    "json:target/cucumber-reports/Cucumber.json",   // must match POM
         "html:target/cucumber-reports/html-report"
-    
    },
     monochrome = true,
     tags = "@Login"
