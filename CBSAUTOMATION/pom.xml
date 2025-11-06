@@ -155,70 +155,71 @@
         </dependency>
     </dependencies>
 
-    <!-- Build -->
-    <build>
-        <plugins>
-            <!-- Surefire -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <includes>
-                        <include>**/CucumberTestRunner.java</include>
-                        <include>**/RunCucumberTestNG.java</include>
-                    </includes>
-                    <systemPropertyVariables>
-                        <cucumber.options>--plugin json:${project.build.directory}/cucumber.json</cucumber.options>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
+    <!-- Build --><build>
+    <plugins>
+        <!-- Surefire Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+                <includes>
+                    <include>**/CucumberTestRunner.java</include>
+                    <include>**/RunCucumberTestNG.java</include>
+                </includes>
+                <systemPropertyVariables>
+                    <!-- Generate JSON report in target/cucumber-reports folder -->
+                    <cucumber.options>--plugin json:${project.build.directory}/cucumber-reports/Cucumber.json</cucumber.options>
+                </systemPropertyVariables>
+            </configuration>
+        </plugin>
 
-            <!-- Masterthought report -->
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>${cucumber.reporting.version}</version>
-                <executions>
-                    <execution>
-                        <id>cucumber-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>Cucumber Selenium Project</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <jsonFiles>
-                                <jsonFile>${project.build.directory}/Jsonreports/reports.json</jsonFile>
-                            </jsonFiles>
+        <!-- Masterthought Cucumber Reporting -->
+        <plugin>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>${cucumber.reporting.version}</version>
+            <executions>
+                <execution>
+                    <id>cucumber-report</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <projectName>Cucumber Selenium Project</projectName>
+                        <reportOutputDirectory>${project.build.directory}/cucumber-reports/html</reportOutputDirectory>
+                        <jsonFiles>
+                            <!-- Must match what Surefire & Runner generate -->
+                            <param>${project.build.directory}/cucumber-reports/Cucumber.json</param>
+                        </jsonFiles>
+                        <buildNumber>1</buildNumber>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 
-                            <buildNumber>1</buildNumber>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+        <!-- Compiler Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+        </plugin>
 
-            <!-- Compiler -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-            </plugin>
+        <!-- Clean Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+        </plugin>
 
-            <!-- Clean -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-            </plugin>
+        <!-- Jar Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+        </plugin>
+    </plugins>
+</build>
 
-            <!-- Jar -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-        </plugins>
-    </build>
 </project>
