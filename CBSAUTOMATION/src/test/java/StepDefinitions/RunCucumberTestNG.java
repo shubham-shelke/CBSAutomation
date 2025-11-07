@@ -82,7 +82,7 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
     }
 }
 */
-/*
+
 package StepDefinitions;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -102,7 +102,7 @@ import java.io.File;
         "junit:target/cucumber-reports/report.xml"
     },
     monochrome = true,
-    tags = "@Login"
+       tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
 )
 public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
 
@@ -114,22 +114,8 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
         }
     }
 }
-*/
 
-package StepDefinitions;
 
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
-
-@CucumberOptions(
-    features = "src/test/resources/Features",
-    glue = {"StepDefinitions"},
-    monochrome = true,
-    tags = "@Login"
-)
-public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
-    // No @BeforeSuite needed if you don't care about report directories
-}
 
 
 
