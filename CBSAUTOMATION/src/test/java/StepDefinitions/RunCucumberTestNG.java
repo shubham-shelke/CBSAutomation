@@ -37,7 +37,7 @@
 // public class RunCucumberTestNG extends AbstractTestNGCucumberTests{
 // }
 
-
+/*
 package StepDefinitions;
 
 import org.junit.runner.RunWith;
@@ -81,7 +81,7 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
         }
     }
 }
-
+*/
 /*
 package StepDefinitions;
 
@@ -115,5 +115,21 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
     }
 }
 */
+
+package StepDefinitions;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+    features = "src/test/resources/Features",
+    glue = {"StepDefinitions"},
+    monochrome = true,
+    tags = "@Login"
+)
+public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
+    // No @BeforeSuite needed if you don't care about report directories
+}
+
 
 
