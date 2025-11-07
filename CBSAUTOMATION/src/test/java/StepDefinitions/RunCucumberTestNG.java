@@ -90,13 +90,15 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.BeforeSuite;
 import java.io.File;
 
+
+
 @CucumberOptions(
     features = "src/test/resources/Features",
     glue = {"StepDefinitions"},
     plugin = {
         "pretty",
         "json:target/cucumber-reports/Cucumber.json",
-        "html:target/cucumber-reports/html-report",
+        // "html:target/cucumber-reports/html-report",
         "junit:target/junit-reports/cucumber.xml"
     },
     monochrome = true,
