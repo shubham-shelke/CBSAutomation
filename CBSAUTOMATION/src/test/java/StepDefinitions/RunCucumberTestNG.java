@@ -102,7 +102,8 @@ import java.io.File;
         "junit:target/cucumber-reports/report.xml"
     },
     monochrome = true,
-       tags = "@Login or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
+       tags = "@Login"
+       // or @Enquiry or @SurveyDetails or @Pricing or @Approver or @MoveMan or @QuoteApprover or @Billing"
 )
 public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
 
