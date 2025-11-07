@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="114.918" tests="2" skipped="0" failures="1" errors="0">
+<testcase classname="Test User login Functionality" name="Check Login is successful with valid credentials - #1.1" time="106.43">
+<system-out><![CDATA[
+Given Browser is open.......................................................passed
+And User is on login page...................................................passed
+When user enter shubham.shelkeIT and 29431 and clicks on login..............passed
+And select the company and business_line....................................passed
+And I click on submit button................................................passed
+Then user navigated to the home page........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Test Enquiry creation" name="Check the Enquiry form field with valid data" time="7.865">
+<failure type="org.openqa.selenium.NoSuchWindowException" message="no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=142.0.3595.53)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.11'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [5d3400ac92edb7b4144e345c588a5265, findElement {using=xpath, value=//select[@id='RevenueBranch']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 142.0.3595.53, fedcm:accounts: true, goog:processID: 27728, ms:edgeOptions: {debuggerAddress: localhost:62915}, msedge: {msedgedriverVersion: 142.0.3595.53 (e9d637e9672e..., userDataDir: C:\Users\SHUBHA~1.SHE\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62915/devtoo..., se:cdpVersion: 142.0.3595.53, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5d3400ac92edb7b4144e345c588a5265">
+<![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=142.0.3595.53)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.11'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [5d3400ac92edb7b4144e345c588a5265, findElement {using=xpath, value=//select[@id='RevenueBranch']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 142.0.3595.53, fedcm:accounts: true, goog:processID: 27728, ms:edgeOptions: {debuggerAddress: localhost:62915}, msedge: {msedgedriverVersion: 142.0.3595.53 (e9d637e9672e..., userDataDir: C:\Users\SHUBHA~1.SHE\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62915/devtoo..., se:cdpVersion: 142.0.3595.53, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5d3400ac92edb7b4144e345c588a5265
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at Pagefactory.EnquiryPF.selectDropdown(EnquiryPF.java:203)
+	at Pagefactory.EnquiryPF.selectRevenueBranch(EnquiryPF.java:130)
+	at StepDefinitions.EnquiryCreateStepdefinition.user_selecting_the_revenue_branch(EnquiryCreateStepdefinition.java:82)
+	at ✽.user selecting the revenue_branch(file:///C:/Users/shubham.shelke/git/repository/CBSAUTOMATION/src/test/resources/Features/2_Enquiry.feature:10)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on the home page..............................................passed
+When user click on the Enquiry button.......................................passed
+Then Enquiry page should be open............................................passed
+And user clicks on the create button........................................passed
+And user selecting the revenue_branch.......................................failed
+And user selecting the move_class...........................................skipped
+And user selecting the info_source..........................................skipped
+And user enter the enquiry form name........................................skipped
+And user select the tentive movedate........................................skipped
+And user select the enquiry receiveddate....................................skipped
+And user selecting the client...............................................skipped
+And user selecting the corporate............................................skipped
+And user selecting the account_manager......................................skipped
+And user select the shipper title...........................................skipped
+And user enters the shipper first name......................................skipped
+And User enters the shipper last name.......................................skipped
+And user selects the shipper designation....................................skipped
+And user selects the shipper type shipper_type..............................skipped
+And user selects the shipment category ship_category........................skipped
+And user fills the address1.................................................skipped
+And user fills the address2.................................................skipped
+And user selects the shipper city city......................................skipped
+And User Enters the Pincode.................................................skipped
+And user selects the shipper nationality nationality........................skipped
+And user enters the mobile number...........................................skipped
+And user enters the email address...........................................skipped
+And user clicks on the detailed tab.........................................skipped
+And user select the handling branch.........................................skipped
+And user select the service_line............................................skipped
+And user select the transit mode............................................skipped
+And user select the handling shipment type..................................skipped
+And user select the commodity...............................................skipped
+And user selects the tentive move date......................................skipped
+And the user selecting the origin city......................................skipped
+And the user selecting destination city.....................................skipped
+And the clicks on the SchSurvey Details tab.................................skipped
+And user selecting Sch.Surveyor Name........................................skipped
+And user selecting Sch.Survey Type..........................................skipped
+And user selecting Sch Survey Date..........................................skipped
+And click on add shipment button............................................skipped
+And click on save button....................................................skipped
+]]></system-out>
+</testcase>
+</testsuite>
