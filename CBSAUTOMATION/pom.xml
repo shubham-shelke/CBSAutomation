@@ -235,7 +235,29 @@
         </execution>
     </executions>
 </plugin>
+<plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.8.1</version>
+    <executions>
+        <execution>
+            <id>cucumber-report</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <projectName>cucumber-selenium-project</projectName>
+                <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                <jsonFiles>
+                    <param>${project.build.directory}/cucumber.json</param> <!-- ✅ Must match your runner output -->
+                </jsonFiles>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
 
+  
 </plugins>
 </build>
 </project>
