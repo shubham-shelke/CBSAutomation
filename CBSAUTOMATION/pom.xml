@@ -57,8 +57,16 @@
     <groupId>net.sourceforge.tess4j</groupId>
     <artifactId>tess4j</artifactId>
     <version>5.7.0</version>
-</dependency>
+         </dependency>
 
+
+         <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit</artifactId>
+    <version>4.2.6</version>
+         </dependency>
+
+             
     </dependencies>
 
     <!-- Build Plugins -->
