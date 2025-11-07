@@ -82,7 +82,7 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
     }
 }
 */
-
+/*
 package StepDefinitions;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -113,4 +113,21 @@ public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
             throw new RuntimeException("Failed to create report directory: " + reportDir.getAbsolutePath());
         }
     }
+}
+*/
+
+
+package StepDefinitions;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+    features = "src/test/resources/Features",
+    glue = {"StepDefinitions"},
+    monochrome = true,
+    tags = "@Login"
+)
+public class RunCucumberTestNG extends AbstractTestNGCucumberTests {
+    // No @BeforeSuite needed if you don't care about report directories
 }
