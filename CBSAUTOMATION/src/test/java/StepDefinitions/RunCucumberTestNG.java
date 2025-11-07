@@ -98,8 +98,8 @@ import java.io.File;
     plugin = {
         "pretty",
         "json:target/cucumber-reports/Cucumber.json",
-        "html:target/cucumber-reports/html-report",
-        "junit:target/cucumber-reports/cucumber.xml"
+        "html:target/cucumber-reports/HtmlReports.html",
+        "junit:target/cucumber-reports/report.xml"
     },
     monochrome = true,
     tags = "@Login"
